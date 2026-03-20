@@ -33,10 +33,10 @@ export default function Footer() {
                     <div>
                         <h3 className="text-white font-bold text-lg mb-6 tracking-wide">Explore</h3>
                         <ul className="space-y-4">
-                            <li><a href="#" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowRight size={14} /> Kashmir Packages</a></li>
-                            <li><a href="#" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowRight size={14} /> Varanasi Spiritual</a></li>
-                            <li><a href="#" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowRight size={14} /> Royal Rajasthan</a></li>
-                            <li><a href="#" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowRight size={14} /> Himalayan Treks</a></li>
+                            <li><a href="/" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowRight size={14} /> Kashmir Packages</a></li>
+                            <li><a href="/" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowRight size={14} /> Varanasi Spiritual</a></li>
+                            <li><a href="/" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowRight size={14} /> Royal Rajasthan</a></li>
+                            <li><a href="/" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowRight size={14} /> Himalayan Treks</a></li>
                         </ul>
                     </div>
 
@@ -47,6 +47,7 @@ export default function Footer() {
                             <li><Link to="/" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors">User Experience</Link></li>
                             <li><Link to="/vendor" className="text-slate-400 font-medium hover:text-amber-400 transition-colors">Vendor Dashboard</Link></li>
                             <li><Link to="/admin" className="text-slate-400 font-medium hover:text-blue-400 transition-colors">Admin Portal</Link></li>
+                            <li><a href="https://travel-backend-xzgq.onrender.com/admin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 font-medium hover:text-purple-400 transition-colors">Backend Dashboard</a></li>
                             <li><a href="#" className="text-slate-400 font-medium hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
                         </ul>
                     </div>
@@ -61,7 +62,7 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center gap-3 text-slate-400 font-medium">
                                 <Phone size={20} className="text-emerald-500 flex-shrink-0" />
-                                <span>+91 98765 43210</span>
+                                <span >+91 98765 43210</span>
                             </li>
                             <li className="flex items-center gap-3 text-slate-400 font-medium">
                                 <Mail size={20} className="text-emerald-500 flex-shrink-0" />

@@ -11,6 +11,24 @@ export default function User() {
     const [searchDestination, setSearchDestination] = useState('Kashmir');
     const [searchMonth, setSearchMonth] = useState('April');
     const [searchGuests, setSearchGuests] = useState('2');
+    const [subscribeEmail, setSubscribeEmail] = useState('');
+    const [subscribing, setSubscribing] = useState(false);
+    const [subscribeMsg, setSubscribeMsg] = useState('');
+
+    const handleSubscribe = async () => {
+        if (!subscribeEmail) return;
+        setSubscribing(true);
+        setSubscribeMsg('');
+        try {
+            const res = await api.post('/auth/subscribe/', { email: subscribeEmail });
+            setSubscribeMsg(res.data.message);
+            setSubscribeEmail('');
+        } catch (err) {
+            setSubscribeMsg(err.response?.data?.message || 'Something went wrong. Try again.');
+        } finally {
+            setSubscribing(false);
+        }
+    };
 
     useEffect(() => {
         const fetchTours = async () => {
@@ -356,13 +374,24 @@ export default function User() {
                         <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
                             <input
                                 type="email"
+                                value={subscribeEmail}
+                                onChange={(e) => setSubscribeEmail(e.target.value)}
                                 placeholder="Enter your email address"
                                 className="flex-1 bg-white/10 border border-white/20 text-white placeholder:text-white/50 px-6 py-4 rounded-full outline-none focus:ring-2 focus:ring-emerald-500/50 backdrop-blur-md font-medium"
                             />
-                            <button className="bg-emerald-500 hover:bg-emerald-400 text-slate-900 px-8 py-4 rounded-full font-black tracking-wide transition-colors flex items-center justify-center gap-2">
-                                SUBSCRIBE <Send size={18} />
+                            <button
+                                onClick={handleSubscribe}
+                                disabled={subscribing}
+                                className="bg-emerald-500 hover:bg-emerald-400 text-slate-900 px-8 py-4 rounded-full font-black tracking-wide transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                            >
+                                {subscribing ? 'SENDING...' : 'SUBSCRIBE'} <Send size={18} />
                             </button>
                         </div>
+                        {subscribeMsg && (
+                            <p className={`text-sm mt-4 font-medium ${subscribeMsg.includes('success') || subscribeMsg.includes('already') ? 'text-emerald-400' : 'text-red-400'}`}>
+                                {subscribeMsg}
+                            </p>
+                        )}
                         <p className="text-slate-500 text-xs sm:text-sm mt-6 font-medium">We respect your privacy. No spam ever.</p>
                     </div>
                 </div>
